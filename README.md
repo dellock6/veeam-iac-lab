@@ -8,7 +8,6 @@ packer:
 
 terraform:
   - vbr: deploy a Windows VM for VBR (Veeam Backup & Replication) Server using Terraform
-
-5.	Deploy linux vm with custom disks for LHR (with xfs and reflink already enabled)
+  - lhr: deploy a Ubuntu Linux 22.04 VM with additional disk formatted with XFS and reflink enabled for Linux Hardened Repository
+  - 
 6.	Create aws S3 bucket with object lock
-7.	Bonus (I can show it) crate all the dns records with Ansible in a windows dns server
