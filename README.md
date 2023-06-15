@@ -9,5 +9,4 @@ packer:
 terraform:
   - vbr: deploy a Windows VM for VBR (Veeam Backup & Replication) Server using Terraform
   - lhr: deploy a Ubuntu Linux 22.04 VM with additional disk formatted with XFS and reflink enabled for Linux Hardened Repository
-  - 
-6.	Create aws S3 bucket with object lock
+  - aws-s3: create a aws S3 bucket with object lock
