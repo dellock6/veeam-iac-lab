@@ -55,7 +55,7 @@ echo "disable_vmware_customization: false" >> /etc/cloud/cloud.cfg
 echo "# to update this file, run dpkg-reconfigure cloud-init
 datasource_list: [ VMware, OVF, None ]" > /etc/cloud/cloud.cfg.d/90_dpkg.cfg
 # Set boot options to not override what we are sending in cloud-init
-echo `> modifying grub`
+echo '> modifying grub'
 sed -i -e "s/GRUB_CMDLINE_LINUX_DEFAULT=\"\(.*\)\"/GRUB_CMDLINE_LINUX_DEFAULT=\"\"/" /etc/default/grub
 update-grub
 EOF
