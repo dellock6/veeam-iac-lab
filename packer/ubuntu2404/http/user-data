@@ -7,7 +7,7 @@ autoinstall:
     hostname: ubuntu2404
     username: ubuntu
     # Wrap the password in double quotes to protect the hash
-    password: "$6$rounds=4096$pwAk.wxvgujkbm$4x724AhMsslbqtp4dISZppC8sHsNmafcVl.R0B0qZ2q8i2TH4/x4uWfpz1JOX3glSMPo4leBoxn7Oyr62U3In." 
+    password: "add_here_your_hashed_password" 
   ssh:
     allow-pw: true
     install-server: true
@@ -30,4 +30,5 @@ autoinstall:
   late-commands:
     - |
       echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
+
       curtin in-target -- chmod 440 /etc/sudoers.d/ubuntu
