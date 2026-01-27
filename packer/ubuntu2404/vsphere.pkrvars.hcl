@@ -4,15 +4,15 @@
 
 # Credentials
 
-vcenter_username                = "administrator@cloudconnect.local"
-vcenter_password                = "Veeam123!"
+vcenter_username                = "administrator@vsphere.local"
+vcenter_password                = "your_password"
 
 # vSphere Objects
 
 vcenter_insecure_connection     = true
-vcenter_server                  = "vcenter.cloudconnect.local"
-vcenter_datacenter              = "VCC-DC"
-vcenter_cluster                 = "SP-Cluster"
-vcenter_datastore               = "ds620-provider-iscsi"
-vcenter_network                 = "DPG-vcc-mgmt"
+vcenter_server                  = "vcenter.vsphere.local"
+vcenter_datacenter              = "datacenter"
+vcenter_cluster                 = "cluster"
+vcenter_datastore               = "datastore"
+vcenter_network                 = "VM Network"
 vcenter_folder                  = "Templates"
