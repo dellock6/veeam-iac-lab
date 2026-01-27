@@ -3,6 +3,7 @@
 Here I'm collecting all the components for creating a small Veeam lab:
 
 packer:
+  - ubuntu2404: create a Ubuntu 22.04 template using Packer
   - ubuntu2204: create a Ubuntu 22.04 template using Packer
   - win2019: create a Windows 2019 template using Packer
 
