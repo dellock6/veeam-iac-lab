@@ -23,7 +23,7 @@ vm_disk_controller_type     = ["pvscsi"]
 vm_network_card             = "vmxnet3"
 vm_boot_wait                = "5s"
 ssh_username                = "ubuntu"
-ssh_password                = "Veeam123!"
+ssh_password                = "your_password"
 
 # ISO Objects
 
