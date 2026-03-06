@@ -235,6 +235,9 @@ source "vsphere-iso" "linux-ubuntu-server" {
   cluster             = var.vcenter_cluster
   folder              = var.vcenter_folder
   insecure_connection = var.vcenter_insecure_connection
+  configuration_parameters = {
+  "vcenter.connection.timeout" = "120"
+  }
   
   # VM Configuration
   guest_os_type        = var.vm_guest_os_type

@@ -2,12 +2,12 @@
 autoinstall:
   version: 1
   refresh-installer:
-    update: no   # STOP the installer from trying to self-update
+    update: no
   identity:
     hostname: ubuntu2404
     username: ubuntu
-    # Wrap the password in double quotes to protect the hash
-    password: "add_here_your_hashed_password" 
+    # Generate with: echo "your_password" | openssl passwd -6 -stdin
+    password: "$6$rounds=4096$yoursalt$hashedpasswordhere"
   ssh:
     allow-pw: true
     install-server: true
@@ -28,7 +28,5 @@ autoinstall:
     - perl
     - cloud-init
   late-commands:
-    - |
-      echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
-
-      curtin in-target -- chmod 440 /etc/sudoers.d/ubuntu
+    - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
+    - curtin in-target -- chmod 440 /etc/sudoers.d/ubuntu
