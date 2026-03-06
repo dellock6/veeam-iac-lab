@@ -1,6 +1,8 @@
-# veeam-iac-lab
+# Veeam IAC lab
 
-This is a small repository where I'm collecting the components I use to create my Veeam lab from the vSphere hypervisor and no existing virtual machine.
+This is a small repository where I'm collecting the components I use to create my Veeam lab, leveraging vSphere hypervisor as the underlying infrastructure.
+
+These are the available scripts:
 
 Packer:
   - ubuntu2404: create a Ubuntu 24.04 template using Packer
@@ -11,3 +13,7 @@ Terraform:
   - vbr: deploy a Windows VM for VBR (Veeam Backup & Replication) Server using Terraform
   - lhr: deploy a Ubuntu Linux 22.04 VM with additional disk formatted with XFS and reflink enabled for Linux Hardened Repository
   - aws-s3: create a aws S3 bucket with object lock
+
+Any feedback is welcome!
+
+Luca

@@ -1,0 +1,4 @@
+# Real variable files - never commit these
+*.auto.pkrvars.hcl
+*.auto.tfvars
+terraform.tfvars
