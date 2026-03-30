@@ -1,0 +1,33 @@
+# Rename as pykmip_auto.tfvars and fill in your values.
+# Never commit this file with real credentials to source control.
+
+# --- vSphere connection ---
+vsphere_user       = "Administrator@vsphere.local"
+vsphere_password   = "CHANGE_ME"
+vsphere_server     = "vcenter.lab.local"
+vsphere_datacenter = "Datacenter"
+vsphere_datastore  = "datastore1"
+vsphere_cluster    = "Cluster"
+vsphere_network    = "VM Network"
+
+# --- Template ---
+vsphere_template = "ubuntu2404"
+
+# --- VM ---
+host_name      = "pykmip-kms"
+host_domain    = "lab.local"
+host_vm_folder = "Infrastructure"
+host_cpu       = "2"
+host_ram_mb    = "2048"
+host_disk_gb   = "20"
+
+# --- Network ---
+host_ip      = "192.168.1.50"
+host_subnet  = "24"
+host_gateway = "192.168.1.1"
+dns_server_list = ["192.168.1.1"]
+dns_suffix_list = ["lab.local"]
+
+# --- OS credentials (from your Packer template) ---
+host_user     = "ubuntu"
+host_password = "CHANGE_ME"

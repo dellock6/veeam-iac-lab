@@ -1,0 +1,9 @@
+# Never commit real credentials
+*.auto.tfvars
+*.tfvars
+
+# Terraform state and cache
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
