@@ -1,9 +1,8 @@
-# Veeam IAC lab
+# My home IAC lab
 
-This is a small repository where I'm collecting the components I use to create my Veeam lab, leveraging vSphere hypervisor as the underlying infrastructure.
+This is a small repository where I'm collecting all the automation scripts that I create for my home lab.
 
-Here I'm collecting all the automation scripts that I create for my home lab.
-What' available?
+Available as of 30.03.2026:
 
 Packer:
   - ubuntu2404: create a Ubuntu 24.04 template using Packer
