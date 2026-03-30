@@ -1,9 +1,12 @@
-# veeam-iac-lab
+# Veeam IAC lab
+
+This is a small repository where I'm collecting the components I use to create my Veeam lab, leveraging vSphere hypervisor as the underlying infrastructure.
 
 Here I'm collecting all the automation scripts that I create for my home lab.
 What' available?
 
 Packer:
+  - ubuntu2404: create a Ubuntu 24.04 template using Packer
   - ubuntu2204: create a Ubuntu 22.04 template using Packer
   - win2019: create a Windows 2019 template using Packer
 

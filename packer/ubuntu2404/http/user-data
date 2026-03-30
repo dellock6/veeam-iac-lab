@@ -1,0 +1,32 @@
+#cloud-config
+autoinstall:
+  version: 1
+  refresh-installer:
+    update: no
+  identity:
+    hostname: ubuntu2404
+    username: ubuntu
+    # Generate with: echo "your_password" | openssl passwd -6 -stdin
+    password: "$6$rounds=4096$yoursalt$hashedpasswordhere"
+  ssh:
+    allow-pw: true
+    install-server: true
+  locale: en_US.UTF-8
+  keyboard:
+    layout: us
+  storage:
+    layout:
+      name: direct
+  apt:
+    fallback: offline-install
+    geoip: true
+    primary:
+      - arches: [amd64]
+        uri: http://gb.archive.ubuntu.com/ubuntu
+  packages:
+    - open-vm-tools
+    - perl
+    - cloud-init
+  late-commands:
+    - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
+    - curtin in-target -- chmod 440 /etc/sudoers.d/ubuntu
