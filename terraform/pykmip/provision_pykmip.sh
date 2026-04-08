@@ -11,21 +11,25 @@ HOST_NAME="${2:?Usage: $0 <VM_IP> <VM_HOSTNAME> <VM_DOMAIN>}"
 HOST_DOMAIN="${3:?Usage: $0 <VM_IP> <VM_HOSTNAME> <VM_DOMAIN>}"
 
 echo "==> Installing dependencies"
+echo "==> Adding deadsnakes PPA for Python 3.11"
+add-apt-repository ppa:deadsnakes/ppa -y
 apt-get update -y
-apt-get install -y --no-install-recommends python3-venv openssl sqlite3
+apt-get install -y --no-install-recommends python3.11 python3.11-venv openssl sqlite3
+# there is a known PyKMIP 0.10.0 incompatibility with Python 3.12, that's why we force the use of 3.11
 
 echo "==> Creating pykmip system user"
 useradd -r -m -s /bin/false pykmip || echo "User already exists, skipping"
 
 echo "==> Installing PyKMIP in virtualenv"
-python3 -m venv /opt/pykmip
+python3.11 -m venv /opt/pykmip
 /opt/pykmip/bin/pip install --upgrade pip
-/opt/pykmip/bin/pip install pykmip
+/opt/pykmip/bin/pip install git+https://github.com/dellock6/pykmip-veeam.git
 
 echo "==> Creating directory structure"
 mkdir -p /etc/pykmip/certs
 mkdir -p /etc/pykmip/policies
 mkdir -p /var/lib/pykmip
+mkdir -p /var/log/pykmip
 
 echo "==> Generating CA certificate"
 openssl genrsa -out /etc/pykmip/certs/ca.key 4096
@@ -55,7 +59,7 @@ openssl x509 -req -days 3650 \
 echo "==> Writing PyKMIP server config"
 cat > /etc/pykmip/server.conf << EOF
 [server]
-hostname=${HOST_IP}
+hostname=0.0.0.0
 port=5696
 certificate_path=/etc/pykmip/certs/server.crt
 key_path=/etc/pykmip/certs/server.key
@@ -69,6 +73,7 @@ EOF
 echo "==> Fixing ownership and permissions"
 chown -R pykmip:pykmip /etc/pykmip /var/lib/pykmip
 chmod 700 /etc/pykmip/certs
+chown -R pykmip:pykmip /etc/pykmip /var/lib/pykmip /var/log/pykmip
 
 echo "==> Writing systemd unit"
 cat > /etc/systemd/system/pykmip.service << EOF

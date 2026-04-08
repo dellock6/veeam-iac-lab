@@ -101,13 +101,28 @@ resource "vsphere_virtual_machine" "pykmip" {
     password = var.host_password
   }
 
-  provisioner "file" {
+provisioner "file" {
     source      = "${path.module}/provision_pykmip.sh"
     destination = "/tmp/provision_pykmip.sh"
+
+    connection {
+      type     = "ssh"
+      host     = var.host_ip
+      user     = var.host_user
+      password = var.host_password
+    }
   }
 
   provisioner "remote-exec" {
+    connection {
+      type     = "ssh"
+      host     = var.host_ip
+      user     = var.host_user
+      password = var.host_password
+    }
+
     inline = [
+      "chmod +x /tmp/provision_pykmip.sh",
       "sudo bash /tmp/provision_pykmip.sh ${var.host_ip} ${var.host_name} ${var.host_domain}"
     ]
   }
